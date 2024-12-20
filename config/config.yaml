@@ -1,0 +1,7 @@
+artifacts_root: artifacts
+
+data_ingestion:
+   root_dir: artifacts/data_ingestion 
+   Dataset_dir: artifacts/data_ingestion/Dataset.csv
+   data_url: https://drive.google.com/file/d/183FZcRd-3nb4Khobnf8pzgg06vOtEy0x/view?usp=drive_link
+   prefix: https://drive.google.com/uc?/export=download&id=
