@@ -10,3 +10,12 @@ data_preprocessing:
    root_dir: artifacts/data_preprocessing
    input_processor_path: artifacts/data_preprocessing/input_processor.pkl
    target_processor_path: artifacts/data_preprocessing/target_processor.pkl
+
+model_trainer:
+   root_dir: artifacts/training
+   data_dir: artifacts/data_ingestion/Dataset.csv
+   input_processor_path: artifacts/data_preprocessing/input_processor.pkl
+   target_processor_path: artifacts/data_preprocessing/target_processor.pkl
+   train_model_path: artifacts/training/model.pkl
+   training_results: artifacts/training/results.csv
+   confusion_matrix: artifacts/training/confusion_matrix.png
