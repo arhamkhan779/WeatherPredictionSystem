@@ -30,8 +30,8 @@ class ModelTrainer:
             X=df.drop(columns=["weather"])
             Y=df[['weather']]
             logger.info("Applying preprocessing")
-            X=self.input_processor.fit_transform(X)
-            Y=self.target_processor.fit_transform(Y)
+            X=self.input_processor.transform(X)
+            Y=self.target_processor.transform(Y)
             logger.info(f"Splitting Data into training and validation part")
             X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=0.2,random_state=45)
             logger.info(f"Perform training on train data")

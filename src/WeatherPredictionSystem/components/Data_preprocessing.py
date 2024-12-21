@@ -6,6 +6,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.pipeline import Pipeline
 from WeatherPredictionSystem.utils.common import save_bin
+import pandas as pd
 
 class DataPreprocessor:
     def __init__(self, config: DataPreprocessorConfig):
@@ -29,12 +30,20 @@ class DataPreprocessor:
         """
         try:
             logger.info("Creating Preprocessor ---------- Start")
-            
+            df=pd.read_csv("artifacts//data_ingestion//Dataset.csv")
+            df=df[['temp_max','temp_min','wind','weather']]
+            df_sun=df[df.weather == "sun"]
+            df_rain=df[df.weather == "rain"]
+            df=pd.concat([df_sun,df_rain])
+            X=df.drop(columns=['weather'])
+            Y=df[['weather']]
             # Create processors
             target_processor = LabelEncoder()
             input_processor = Pipeline(steps=[
                 ('scaler', StandardScaler())
             ])
+            target_processor=target_processor.fit(Y)
+            input_processor=input_processor.fit(X)
 
             # Save processors to specified paths
             save_bin(target_processor, Path(self.config.target_processor_path))

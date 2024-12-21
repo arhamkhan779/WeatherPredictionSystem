@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            background: linear-gradient(to bottom, #87CEEB, #FFFAF0);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            position: relative;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .sun {
+            position: absolute;
+            bottom: -150px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #FFD700, #FFA500);
+            border-radius: 50%;
+            box-shadow: 0 0 80px 40px rgba(255, 223, 0, 0.8);
+            animation: rise 10s ease-in-out forwards;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -150px;
+                background: radial-gradient(circle, #FFD700, #FFA500);
+            }
+            50% {
+                bottom: 50%;
+                background: radial-gradient(circle, #FFE066, #FFA042);
+            }
+            100% {
+                bottom: 60%;
+                background: radial-gradient(circle, #FFFACD, #FFA500);
+            }
+        }
+
+        .sky {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #FFFAF0, #FFDAB9);
+            animation: brighten 10s ease-in-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes brighten {
+            0% {
+                background: linear-gradient(to bottom, #FFFAF0, #FFDAB9);
+            }
+            100% {
+                background: linear-gradient(to bottom, #FFDAB9, #FFFAF0);
+            }
+        }
+
+        .message {
+            position: absolute;
+            top: 70%;
+            text-align: center;
+            font-size: 2rem;
+            color: #FFA500;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 10s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sky"></div>
+    <div class="sun"></div>
+    <div class="message">It's sunny today!</div>
+</body>
+</html>
