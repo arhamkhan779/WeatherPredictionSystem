@@ -5,3 +5,8 @@ data_ingestion:
    Dataset_dir: artifacts/data_ingestion/Dataset.csv
    data_url: https://drive.google.com/file/d/183FZcRd-3nb4Khobnf8pzgg06vOtEy0x/view?usp=drive_link
    prefix: https://drive.google.com/uc?/export=download&id=
+
+data_preprocessing:
+   root_dir: artifacts/data_preprocessing
+   input_processor_path: artifacts/data_preprocessing/input_processor.pkl
+   target_processor_path: artifacts/data_preprocessing/target_processor.pkl

@@ -1,6 +1,6 @@
 from WeatherPredictionSystem.constants import *
 from WeatherPredictionSystem.utils.common import read_yaml,create_directories
-from WeatherPredictionSystem.entity.config_entity import DataIngstionConfig
+from WeatherPredictionSystem.entity.config_entity import DataIngstionConfig,DataPreprocessorConfig
 import os
 from pathlib import Path
 
@@ -26,3 +26,16 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    
+    def get_data_preprocessing_config(self) -> DataPreprocessorConfig:
+        config=self.config.data_preprocessing
+        create_directories([config.root_dir])
+
+        data_preprocessing_config=DataPreprocessorConfig(
+           root_dir=config.root_dir,
+           input_processor_path=config.input_processor_path,
+           target_processor_path=config.target_processor_path
+        )
+
+        return data_preprocessing_config
+    
